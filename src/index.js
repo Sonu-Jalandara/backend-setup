@@ -4,20 +4,21 @@
 
 import dotenv from "dotenv"
 import connectionDB from "./db/index.js"
-// import express from "express"
-// const app = express()
+import express from "express"
+const app = express()
+// import {app} from "./app.js"
 
 connectionDB()
 .then(()=>{
   app.listen(process.env.PORT || 8000 ,()=>{
     console.log(`Server is listening at port : ${process.env.PORT}`)
   })
-  app.on(error,()=>{
+  // app.on(error,()=>{
+  //   console.log("ERROR is found in app",error)
+  // })
+  app.on('error',()=>{
     console.log("ERROR is found in app",error)
   })
-  // app.on('error',()=>{
-  //   console.log("ERROR is found in app",'error')
-  // })
 })
 .catch((err)=>{
   console.log(" Mongo DB connection failed !! ", err)
