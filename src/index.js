@@ -4,9 +4,9 @@
 
 import dotenv from "dotenv"
 import connectionDB from "./db/index.js"
-import express from "express"
-const app = express()
-// import {app} from "./app.js"
+// import express from "express"
+// const app = express()
+import {app} from "./app.js"
 
 connectionDB()
 .then(()=>{

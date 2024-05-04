@@ -55,7 +55,7 @@ const userSchema = new Schema (
 userSchema.pre("save", async function (next){
     if(!this.isModified("password"))  return next();
 
-     this.password = bcrypt.hash(this,this.password,10)
+     this.password = await bcrypt.hash(this,this.password,10)
      next() // ( 10 is rounds )
  // here a  plugin named  "pre" ( it is method )is used to preforming a task just before saving tha data in database  i.e.  to encrypte the password and "save " event is used bcz we are using "pre " on data saving.
 
